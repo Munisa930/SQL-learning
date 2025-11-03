@@ -1,0 +1,1073 @@
+Lesson 12: String Functions, Mathematical Functions, Date and Time Functions
+1.	Sales - Contains sales data with fields such as SalesAmount, ProductID, SaleDate, etc.
+2.	Products - Contains product details like ProductID, ProductName, Price, etc.
+3.	Orders - Contains order details, including OrderID, CustomerID, OrderAmount, OrderDate, etc.
+4.	Customers - Contains customer information like CustomerID, CustomerName, etc.
+
+1. Sales Table
+CREATE TABLE Sales (
+    SalesID INT PRIMARY KEY,
+    SalesAmount DECIMAL(10, 2),
+    ProductID INT,
+    SaleDate DATE
+);
+
+INSERT INTO Sales (SalesID, SalesAmount, ProductID, SaleDate) VALUES
+(1, 150.00, 1, '2025-01-01'),
+(2, 200.00, 2, '2025-01-02'),
+(3, 120.00, 3, '2025-01-03'),
+(4, 180.00, 4, '2025-01-04'),
+(5, 220.00, 5, '2025-01-05'),
+(6, 140.00, 6, '2025-01-06'),
+(7, 250.00, 1, '2025-01-07'),
+(8, 170.00, 2, '2025-01-08'),
+(9, 160.00, 3, '2025-01-09'),
+(10, 190.00, 4, '2025-01-10'),
+(11, 210.00, 5, '2025-01-11'),
+(12, 130.00, 6, '2025-01-12'),
+(13, 200.00, 1, '2025-01-13'),
+(14, 180.00, 2, '2025-01-14'),
+(15, 150.00, 3, '2025-01-15'),
+(16, 220.00, 4, '2025-01-16'),
+(17, 170.00, 5, '2025-01-17'),
+(18, 160.00, 6, '2025-01-18'),
+(19, 250.00, 1, '2025-01-19'),
+(20, 180.00, 2, '2025-01-20'),
+(21, 140.00, 3, '2025-01-21'),
+(22, 190.00, 4, '2025-01-22'),
+(23, 210.00, 5, '2025-01-23'),
+(24, 160.00, 6, '2025-01-24'),
+(25, 150.00, 1, '2025-01-25'),
+(26, 200.00, 2, '2025-01-26'),
+(27, 220.00, 3, '2025-01-27'),
+(28, 130.00, 4, '2025-01-28'),
+(29, 250.00, 5, '2025-01-29'),
+(30, 180.00, 6, '2025-01-30'),
+(31, 210.00, 1, '2025-02-01'),
+(32, 170.00, 2, '2025-02-02'),
+(33, 160.00, 3, '2025-02-03'),
+(34, 190.00, 4, '2025-02-04'),
+(35, 200.00, 5, '2025-02-05'),
+(36, 220.00, 6, '2025-02-06'),
+(37, 130.00, 1, '2025-02-07'),
+(38, 250.00, 2, '2025-02-08'),
+(39, 140.00, 3, '2025-02-09'),
+(40, 180.00, 4, '2025-02-10');
+2. Products Table
+CREATE TABLE Products (
+    ProductID INT PRIMARY KEY,
+    ProductName VARCHAR(100),
+    Price DECIMAL(10, 2)
+);
+
+INSERT INTO Products (ProductID, ProductName, Price) VALUES
+(1, 'Laptop', 1000.00),
+(2, 'Smartphone', 800.00),
+(3, 'Tablet', 500.00),
+(4, 'Monitor', 300.00),
+(5, 'Headphones', 150.00),
+(6, 'Mouse', 25.00),
+(7, 'Keyboard', 50.00),
+(8, 'Camera', 400.00),
+(9, 'Printer', 150.00),
+(10, 'Smartwatch', 200.00),
+(11, 'Speakers', 80.00),
+(12, 'Flash Drive', 20.00),
+(13, 'Hard Drive', 120.00),
+(14, 'External Battery', 30.00),
+(15, 'Charger', 15.00),
+(16, 'Router', 70.00),
+(17, 'Graphics Card', 500.00),
+(18, 'Processor', 300.00),
+(19, 'RAM', 100.00),
+(20, 'SSD', 250.00),
+(21, 'Motherboard', 150.00),
+(22, 'Camera Lens', 600.00),
+(23, 'Projector', 350.00),
+(24, 'Bluetooth Speaker', 60.00),
+(25, 'Wired Headset', 40.00),
+(26, 'Portable Speaker', 55.00),
+(27, 'Microphone', 90.00),
+(28, 'Webcam', 50.00),
+(29, 'Smart Light Bulb', 30.00),
+(30, 'Action Camera', 450.00),
+(31, 'USB Cable', 5.00),
+(32, 'Gaming Mouse', 60.00),
+(33, 'Gaming Chair', 150.00),
+(34, 'Game Console', 350.00),
+(35, 'Virtual Reality Headset', 500.00),
+(36, 'Electric Scooter', 800.00),
+(37, 'Bluetooth Earbuds', 100.00),
+(38, 'Electric Toothbrush', 40.00),
+(39, 'Juicer', 90.00),
+(40, 'Coffee Maker', 120.00);
+3. Orders Table
+CREATE TABLE Orders (
+    OrderID INT PRIMARY KEY,
+    CustomerID INT,
+    OrderAmount DECIMAL(10, 2),
+    OrderDate DATE
+);
+
+INSERT INTO Orders (OrderID, CustomerID, OrderAmount, OrderDate) VALUES
+(1, 1, 500.00, '2025-01-01'),
+(2, 2, 800.00, '2025-01-02'),
+(3, 3, 120.00, '2025-01-03'),
+(4, 4, 180.00, '2025-01-04'),
+(5, 5, 220.00, '2025-01-05'),
+(6, 6, 140.00, '2025-01-06'),
+(7, 7, 250.00, '2025-01-07'),
+(8, 8, 170.00, '2025-01-08'),
+(9, 9, 160.00, '2025-01-09'),
+(10, 10, 190.00, '2025-01-10'),
+(11, 11, 210.00, '2025-01-11'),
+(12, 12, 130.00, '2025-01-12'),
+(13, 13, 200.00, '2025-01-13'),
+(14, 14, 180.00, '2025-01-14'),
+(15, 15, 150.00, '2025-01-15'),
+(16, 16, 220.00, '2025-01-16'),
+(17, 17, 170.00, '2025-01-17'),
+(18, 18, 160.00, '2025-01-18'),
+(19, 19, 250.00, '2025-01-19'),
+(20, 20, 180.00, '2025-01-20'),
+(21, 21, 140.00, '2025-01-21'),
+(22, 22, 190.00, '2025-01-22'),
+(23, 23, 210.00, '2025-01-23'),
+(24, 24, 160.00, '2025-01-24'),
+(25, 25, 150.00, '2025-01-25'),
+(26, 26, 200.00, '2025-01-26'),
+(27, 27, 220.00, '2025-01-27'),
+(28, 28, 130.00, '2025-01-28'),
+(29, 29, 250.00, '2025-01-29'),
+(30, 30, 180.00, '2025-01-30'),
+(31, 31, 210.00, '2025-02-01'),
+(32, 32, 170.00, '2025-02-02'),
+(33, 33, 160.00, '2025-02-03'),
+(34, 34, 190.00, '2025-02-04'),
+(35, 35, 200.00, '2025-02-05'),
+(36, 36, 220.00, '2025-02-06'),
+(37, 37, 130.00, '2025-02-07'),
+(38, 38, 250.00, '2025-02-08'),
+(39, 39, 140.00, '2025-02-09'),
+(40, 40, 180.00, '2025-02-10');
+4. Customers Table
+CREATE TABLE Customers (
+    CustomerID INT PRIMARY KEY,
+    CustomerName VARCHAR(100),
+    City VARCHAR(50)
+);
+
+INSERT INTO Customers (CustomerID, CustomerName, City) VALUES
+(1, 'Alice Johnson', 'New York'),
+(2, 'Bob Smith', 'Los Angeles'),
+(3, 'Charlie Brown', 'Chicago'),
+(4, 'David Clark', 'Houston'),
+(5, 'Eva Williams', 'Phoenix'),
+(6, 'Frank Miller', 'San Francisco'),
+(7, 'Grace Taylor', 'Boston'),
+(8, 'Henry Martinez', 'Miami'),
+(9, 'Irene Davis', 'Dallas'),
+(10, 'James Moore', 'Atlanta'),
+(11, 'Kathy Walker', 'Washington'),
+(12, 'Leo Hernandez', 'Austin'),
+(13, 'Maria White', 'Seattle'),
+(14, 'Nancy Harris', 'Detroit'),
+(15, 'Oscar Lewis', 'Philadelphia'),
+(16, 'Paul Young', 'San Diego'),
+(17, 'Quincy Robinson', 'Denver'),
+(18, 'Rachel Scott', 'Portland'),
+(19, 'Sam Evans', 'Minneapolis'),
+(20, 'Tina King', 'Salt Lake City'),
+(21, 'Ursula Wright', 'Orlando'),
+(22, 'Victor Green', 'Las Vegas'),
+(23, 'Walter Adams', 'Cleveland'),
+(24, 'Xander Lopez', 'Tucson'),
+(25, 'Yvonne Perez', 'Indianapolis'),
+(26, 'Zachary Harris', 'Columbus'),
+(27, 'Alice Moore', 'Memphis'),
+(28, 'Bobby Wilson', 'Oklahoma City'),
+(29, 'Catherine Lewis', 'Louisville'),
+(30, 'Daniel Jackson', 'Nashville'),
+(31, 'Eleanor White', 'Raleigh'),
+(32, 'Felix Clark', 'New Orleans'),
+(33, 'Grace Allen', 'St. Louis'),
+(34, 'Howard Young', 'San Antonio'),
+(35, 'Ivy King', 'Las Vegas'),
+(36, 'John Wright', 'San Jose'),
+(37, 'Kimberly Brown', 'Austin'),
+(38, 'Liam Scott', 'Phoenix'),
+(39, 'Monica Hall', 'Denver'),
+(40, 'Neil Adams', 'Chicago');
+
+
+Lesson 14: Derived Table, CTE, Recursive CTE
+1.	Employees - Contains employee information such as EmployeeID, DepartmentID, Salary, etc.
+2.	Departments - Contains department information such as DepartmentID, DepartmentName, etc.
+3.	Sales - Contains sales data with fields such as SalesID, ProductID, SalesAmount, etc.
+4.	Products - Contains product details, similar to the table in Lesson 12.
+5.	Here are the SQL statements to create and insert 40 rows of data for each table: Employees, Departments, Sales, and Products.
+1. Employees Table
+CREATE TABLE Employees (
+    EmployeeID INT PRIMARY KEY,
+    DepartmentID INT,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    Salary DECIMAL(10, 2)
+);
+
+INSERT INTO Employees (EmployeeID, DepartmentID, FirstName, LastName, Salary) VALUES
+(1, 1, 'John', 'Doe', 60000.00),
+(2, 1, 'Jane', 'Smith', 65000.00),
+(3, 2, 'James', 'Brown', 70000.00),
+(4, 3, 'Mary', 'Johnson', 75000.00),
+(5, 4, 'Linda', 'Williams', 80000.00),
+(6, 2, 'Michael', 'Jones', 85000.00),
+(7, 1, 'Robert', 'Miller', 55000.00),
+(8, 3, 'Patricia', 'Davis', 72000.00),
+(9, 4, 'Jennifer', 'García', 77000.00),
+(10, 1, 'William', 'Martínez', 69000.00),
+(11, 5, 'Elizabeth', 'Hernández', 95000.00),
+(12, 2, 'David', 'Lopez', 88000.00),
+(13, 3, 'Joseph', 'Martinez', 74000.00),
+(14, 4, 'Susan', 'Rodriguez', 80000.00),
+(15, 5, 'Daniel', 'Wilson', 89000.00),
+(16, 1, 'Karen', 'Moore', 67000.00),
+(17, 2, 'Charles', 'Taylor', 71000.00),
+(18, 3, 'Christopher', 'Anderson', 76000.00),
+(19, 4, 'Sarah', 'Thomas', 83000.00),
+(20, 5, 'Jessica', 'Jackson', 92000.00),
+(21, 1, 'Kevin', 'White', 64000.00),
+(22, 2, 'Nancy', 'Harris', 78000.00),
+(23, 3, 'Steven', 'Clark', 78000.00),
+(24, 4, 'Betty', 'Lewis', 79000.00),
+(25, 5, 'Ryan', 'Young', 94000.00),
+(26, 1, 'Daniel', 'King', 68000.00),
+(27, 2, 'Dorothy', 'Scott', 73000.00),
+(28, 3, 'Ethan', 'Adams', 77000.00),
+(29, 4, 'Megan', 'Baker', 82000.00),
+(30, 5, 'Anthony', 'Green', 88000.00),
+(31, 1, 'Laura', 'Nelson', 66000.00),
+(32, 2, 'Ryan', 'Carter', 71000.00),
+(33, 3, 'George', 'Mitchell', 76000.00),
+(34, 4, 'Deborah', 'Perez', 79000.00),
+(35, 5, 'Brian', 'Roberts', 90000.00),
+(36, 1, 'Alice', 'Garcia', 60000.00),
+(37, 2, 'Jack', 'Evans', 72000.00),
+(38, 3, 'Ashley', 'Gonzalez', 77000.00),
+(39, 4, 'Evan', 'Stewart', 80000.00),
+(40, 5, 'Sophia', 'King', 93000.00);
+2. Departments Table
+CREATE TABLE Departments (
+    DepartmentID INT PRIMARY KEY,
+    DepartmentName VARCHAR(50)
+);
+
+INSERT INTO Departments (DepartmentID, DepartmentName) VALUES
+(1, 'HR'),
+(2, 'Sales'),
+(3, 'Marketing'),
+(4, 'Finance'),
+(5, 'IT'),
+(6, 'Operations'),
+(7, 'Customer Service'),
+(8, 'R&D'),
+(9, 'Legal'),
+(10, 'Logistics');
+3. Sales Table
+CREATE TABLE Sales (
+    SalesID INT PRIMARY KEY,
+    ProductID INT,
+    SalesAmount DECIMAL(10, 2),
+    SaleDate DATE
+);
+
+INSERT INTO Sales (SalesID, ProductID, SalesAmount, SaleDate) VALUES
+(1, 1, 1500.00, '2025-01-01'),
+(2, 2, 2000.00, '2025-01-02'),
+(3, 3, 1200.00, '2025-01-03'),
+(4, 4, 1800.00, '2025-01-04'),
+(5, 5, 2200.00, '2025-01-05'),
+(6, 6, 1400.00, '2025-01-06'),
+(7, 1, 2500.00, '2025-01-07'),
+(8, 2, 1700.00, '2025-01-08'),
+(9, 3, 1600.00, '2025-01-09'),
+(10, 4, 1900.00, '2025-01-10'),
+(11, 5, 2100.00, '2025-01-11'),
+(12, 6, 1300.00, '2025-01-12'),
+(13, 1, 2000.00, '2025-01-13'),
+(14, 2, 1800.00, '2025-01-14'),
+(15, 3, 1500.00, '2025-01-15'),
+(16, 4, 2200.00, '2025-01-16'),
+(17, 5, 1700.00, '2025-01-17'),
+(18, 6, 1600.00, '2025-01-18'),
+(19, 1, 2500.00, '2025-01-19'),
+(20, 2, 1800.00, '2025-01-20'),
+(21, 3, 1400.00, '2025-01-21'),
+(22, 4, 1900.00, '2025-01-22'),
+(23, 5, 2100.00, '2025-01-23'),
+(24, 6, 1600.00, '2025-01-24'),
+(25, 1, 1500.00, '2025-01-25'),
+(26, 2, 2000.00, '2025-01-26'),
+(27, 3, 2200.00, '2025-01-27'),
+(28, 4, 1300.00, '2025-01-28'),
+(29, 5, 2500.00, '2025-01-29'),
+(30, 6, 1800.00, '2025-01-30'),
+(31, 1, 2100.00, '2025-02-01'),
+(32, 2, 1700.00, '2025-02-02'),
+(33, 3, 1600.00, '2025-02-03'),
+(34, 4, 1900.00, '2025-02-04'),
+(35, 5, 2000.00, '2025-02-05'),
+(36, 6, 2200.00, '2025-02-06'),
+(37, 1, 1300.00, '2025-02-07'),
+(38, 2, 2500.00, '2025-02-08'),
+(39, 3, 1400.00, '2025-02-09'),
+(40, 4, 1800.00, '2025-02-10');
+4. Products Table
+CREATE TABLE Products (
+    ProductID INT PRIMARY KEY,
+    ProductName VARCHAR(100),
+    Price DECIMAL(10, 2)
+);
+
+INSERT INTO Products (ProductID, ProductName, Price) VALUES
+(1, 'Laptop', 1000.00),
+(2, 'Smartphone', 800.00),
+(3, 'Tablet', 500.00),
+(4, 'Monitor', 300.00),
+(5, 'Headphones', 150.00),
+(6, 'Mouse', 25.00),
+(7, 'Keyboard', 50.00),
+(8, 'Camera', 400.00),
+(9, 'Printer', 150.00),
+(10, 'Smartwatch', 200.00),
+(11, 'Speakers', 80.00),
+(12, 'Flash Drive', 20.00),
+(13, 'Hard Drive', 120.00),
+(14, 'External Battery', 30.00),
+(15, 'Charger', 15.00),
+(16, 'Router', 70.00),
+(17, 'Graphics Card', 500.00),
+(18, 'Processor', 300.00),
+(19, 'RAM', 120.00),
+(20, 'Motherboard', 150.00),
+(21, 'Power Supply', 80.00),
+(22, 'Webcam', 40.00),
+(23, 'Microphone', 60.00),
+(24, 'Projector', 400.00),
+(25, 'Electric Fan', 25.00),
+(26, 'Air Conditioner', 250.00),
+(27, 'Refrigerator', 500.00),
+(28, 'Washing Machine', 350.00),
+(29, 'Microwave', 100.00),
+(30, 'Blender', 80.00),
+(31, 'Vacuum Cleaner', 150.00),
+(32, 'Coffee Maker', 90.00),
+(33, 'Toaster', 40.00),
+(34, 'Water Heater', 120.00),
+(35, 'Iron', 30.00),
+(36, 'Hair Dryer', 40.00),
+(37, 'Electric Toothbrush', 50.00),
+(38, 'Shaver', 60.00),
+(39, 'Electric Kettle', 30.00),
+(40, 'Rice Cooker', 60.00);
+
+Lesson 16: View, Temp Tables, Temp Variables, Functions, Stored Procedures, Merge
+1.	Orders - Contains order information such as OrderID, CustomerID, OrderAmount, OrderDate, etc.
+2.	OrderDetails - Contains details of products in each order such as OrderID, ProductID, Quantity, etc.
+3.	Employees - Contains employee details such as EmployeeID, Name, Department, etc.
+4.	Products - Contains product details such as ProductID, ProductName, Category, Price, etc.
+5.	Here are the SQL statements to create and insert 40 rows of data for each table: Orders, OrderDetails, Employees, and Products.
+1. Orders Table
+CREATE TABLE Orders (
+    OrderID INT PRIMARY KEY,
+    CustomerID INT,
+    OrderAmount DECIMAL(10, 2),
+    OrderDate DATE
+);
+
+INSERT INTO Orders (OrderID, CustomerID, OrderAmount, OrderDate) VALUES
+(1, 101, 250.00, '2025-01-01'),
+(2, 102, 450.00, '2025-01-02'),
+(3, 103, 120.00, '2025-01-03'),
+(4, 104, 340.00, '2025-01-04'),
+(5, 105, 500.00, '2025-01-05'),
+(6, 106, 200.00, '2025-01-06'),
+(7, 107, 750.00, '2025-01-07'),
+(8, 108, 300.00, '2025-01-08'),
+(9, 109, 600.00, '2025-01-09'),
+(10, 110, 400.00, '2025-01-10'),
+(11, 101, 250.00, '2025-01-11'),
+(12, 102, 550.00, '2025-01-12'),
+(13, 103, 350.00, '2025-01-13'),
+(14, 104, 600.00, '2025-01-14'),
+(15, 105, 200.00, '2025-01-15'),
+(16, 106, 700.00, '2025-01-16'),
+(17, 107, 450.00, '2025-01-17'),
+(18, 108, 550.00, '2025-01-18'),
+(19, 109, 500.00, '2025-01-19'),
+(20, 110, 400.00, '2025-01-20'),
+(21, 101, 700.00, '2025-01-21'),
+(22, 102, 150.00, '2025-01-22'),
+(23, 103, 600.00, '2025-01-23'),
+(24, 104, 250.00, '2025-01-24'),
+(25, 105, 550.00, '2025-01-25'),
+(26, 106, 120.00, '2025-01-26'),
+(27, 107, 600.00, '2025-01-27'),
+(28, 108, 500.00, '2025-01-28'),
+(29, 109, 450.00, '2025-01-29'),
+(30, 110, 300.00, '2025-01-30'),
+(31, 101, 350.00, '2025-02-01'),
+(32, 102, 400.00, '2025-02-02'),
+(33, 103, 600.00, '2025-02-03'),
+(34, 104, 450.00, '2025-02-04'),
+(35, 105, 300.00, '2025-02-05'),
+(36, 106, 500.00, '2025-02-06'),
+(37, 107, 400.00, '2025-02-07'),
+(38, 108, 250.00, '2025-02-08'),
+(39, 109, 650.00, '2025-02-09'),
+(40, 110, 200.00, '2025-02-10');
+2. OrderDetails Table
+CREATE TABLE OrderDetails (
+    OrderDetailID INT PRIMARY KEY,
+    OrderID INT,
+    ProductID INT,
+    Quantity INT,
+    UnitPrice DECIMAL(10, 2)
+);
+
+INSERT INTO OrderDetails (OrderDetailID, OrderID, ProductID, Quantity, UnitPrice) VALUES
+(1, 1, 101, 2, 50.00),
+(2, 1, 102, 1, 100.00),
+(3, 2, 103, 3, 150.00),
+(4, 2, 104, 2, 150.00),
+(5, 3, 105, 1, 120.00),
+(6, 3, 106, 1, 100.00),
+(7, 4, 107, 5, 50.00),
+(8, 4, 108, 3, 60.00),
+(9, 5, 109, 6, 75.00),
+(10, 5, 110, 4, 125.00),
+(11, 6, 101, 1, 50.00),
+(12, 6, 102, 2, 100.00),
+(13, 7, 103, 4, 75.00),
+(14, 7, 104, 2, 150.00),
+(15, 8, 105, 3, 80.00),
+(16, 8, 106, 1, 100.00),
+(17, 9, 107, 1, 200.00),
+(18, 9, 108, 2, 50.00),
+(19, 10, 109, 4, 150.00),
+(20, 10, 110, 2, 125.00),
+(21, 11, 101, 3, 50.00),
+(22, 11, 102, 2, 100.00),
+(23, 12, 103, 1, 150.00),
+(24, 12, 104, 3, 150.00),
+(25, 13, 105, 2, 120.00),
+(26, 13, 106, 1, 100.00),
+(27, 14, 107, 5, 50.00),
+(28, 14, 108, 2, 60.00),
+(29, 15, 109, 6, 75.00),
+(30, 15, 110, 3, 125.00),
+(31, 16, 101, 4, 50.00),
+(32, 16, 102, 2, 100.00),
+(33, 17, 103, 3, 150.00),
+(34, 17, 104, 1, 150.00),
+(35, 18, 105, 2, 120.00),
+(36, 18, 106, 1, 100.00),
+(37, 19, 107, 2, 200.00),
+(38, 19, 108, 3, 50.00),
+(39, 20, 109, 5, 75.00),
+(40, 20, 110, 2, 125.00);
+3. Employees Table
+CREATE TABLE Employees (
+    EmployeeID INT PRIMARY KEY,
+    DepartmentID INT,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    Salary DECIMAL(10, 2)
+);
+
+INSERT INTO Employees (EmployeeID, DepartmentID, FirstName, LastName, Salary) VALUES
+(1, 1, 'John', 'Doe', 60000.00),
+(2, 1, 'Jane', 'Smith', 65000.00),
+(3, 2, 'James', 'Brown', 70000.00),
+(4, 3, 'Mary', 'Johnson', 75000.00),
+(5, 4, 'Linda', 'Williams', 80000.00),
+(6, 2, 'Michael', 'Jones', 85000.00),
+(7, 1, 'Robert', 'Miller', 55000.00),
+(8, 3, 'Patricia', 'Davis', 72000.00),
+(9, 4, 'Jennifer', 'García', 77000.00),
+(10, 1, 'William', 'Martínez', 69000.00),
+(11, 5, 'Elizabeth', 'Hernández', 95000.00),
+(12, 2, 'David', 'Lopez', 88000.00),
+(13, 3, 'Joseph', 'Martinez', 74000.00),
+(14, 4, 'Susan', 'Rodriguez', 80000.00),
+(15, 5, 'Daniel', 'Wilson', 89000.00),
+(16, 1, 'Karen', 'Moore', 67000.00),
+(17, 2, 'Charles', 'Taylor', 71000.00),
+(18, 3, 'Christopher', 'Anderson', 76000.00),
+(19, 4, 'Sarah', 'Thomas', 83000.00),
+(20, 5, 'Jessica', 'Jackson', 92000.00),
+(21, 1, 'Kevin', 'White', 64000.00),
+(22, 2, 'Nancy', 'Harris', 78000.00),
+(23, 3,'Edward', 'Clark', 72000.00), (24, 4, 'Helen', 'Lewis', 79000.00), (25, 5, 'Brian', 'Young', 95000.00), (26, 1, 'Laura', 'Allen', 67000.00), (27, 2, 'James', 'King', 72000.00), (28, 3, 'Patricia', 'Scott', 78000.00), (29, 4, 'Michael', 'Adams', 80000.00), (30, 5, 'Mary', 'Baker', 85000.00), (31, 1, 'Steven', 'Gonzalez', 61000.00), (32, 2, 'Jessica', 'Nelson', 75000.00), (33, 3, 'Matthew', 'Carter', 71000.00), (34, 4, 'George', 'Mitchell', 80000.00), (35, 5, 'Ashley', 'Perez', 90000.00), (36, 1, 'Sarah', 'Roberts', 66000.00), (37, 2, 'Joshua', 'Evans', 77000.00), (38, 3, 'Nicholas', 'Gonzalez', 78000.00), (39, 4, 'Rachel', 'Kim', 85000.00), (40, 5, 'Alexander', 'Russell', 92000.00);
+
+### **4. Products Table**
+```sql
+CREATE TABLE Products (
+    ProductID INT PRIMARY KEY,
+    ProductName VARCHAR(50),
+    Category VARCHAR(50),
+    Price DECIMAL(10, 2)
+);
+
+INSERT INTO Products (ProductID, ProductName, Category, Price) VALUES
+(1, 'Laptop', 'Electronics', 800.00),
+(2, 'Smartphone', 'Electronics', 600.00),
+(3, 'Headphones', 'Electronics', 100.00),
+(4, 'Keyboard', 'Electronics', 30.00),
+(5, 'Mouse', 'Electronics', 20.00),
+(6, 'Monitor', 'Electronics', 250.00),
+(7, 'Printer', 'Electronics', 150.00),
+(8, 'Tablet', 'Electronics', 350.00),
+(9, 'Smartwatch', 'Electronics', 120.00),
+(10, 'Speaker', 'Electronics', 50.00),
+(11, 'Refrigerator', 'Appliances', 500.00),
+(12, 'Washing Machine', 'Appliances', 400.00),
+(13, 'Microwave', 'Appliances', 120.00),
+(14, 'Blender', 'Appliances', 60.00),
+(15, 'Air Conditioner', 'Appliances', 250.00),
+(16, 'Hair Dryer', 'Appliances', 30.00),
+(17, 'Vacuum Cleaner', 'Appliances', 150.00),
+(18, 'Coffee Maker', 'Appliances', 90.00),
+(19, 'Toaster', 'Appliances', 40.00),
+(20, 'Iron', 'Appliances', 25.00),
+(21, 'Shirt', 'Clothing', 30.00),
+(22, 'Jeans', 'Clothing', 40.00),
+(23, 'Jacket', 'Clothing', 60.00),
+(24, 'Sweater', 'Clothing', 50.00),
+(25, 'T-shirt', 'Clothing', 20.00),
+(26, 'Shoes', 'Footwear', 80.00),
+(27, 'Socks', 'Footwear', 10.00),
+(28, 'Sneakers', 'Footwear', 100.00),
+(29, 'Boots', 'Footwear', 120.00),
+(30, 'Hat', 'Accessories', 15.00),
+(31, 'Sunglasses', 'Accessories', 25.00),
+(32, 'Bag', 'Accessories', 50.00),
+(33, 'Belt', 'Accessories', 30.00),
+(34, 'Wallet', 'Accessories', 20.00),
+(35, 'Watch', 'Accessories', 100.00),
+(36, 'Ring', 'Accessories', 150.00),
+(37, 'Necklace', 'Accessories', 120.00),
+(38, 'Bracelet', 'Accessories', 80.00),
+(39, 'Earrings', 'Accessories', 40.00),
+(40, 'Perfume', 'Beauty', 60.00);
+
+Lesson 17: Subqueries, Exists
+1.	Customers - Contains customer details such as CustomerID, CustomerName, City, etc.
+2.	Orders - Contains order data such as OrderID, CustomerID, OrderAmount, etc.
+3.	Products - Contains details of products such as ProductID, ProductName, Price, etc.
+4.	Sales - Contains sales records such as SalesID, ProductID, SalesAmount, etc.
+5.	Here are the SQL statements to create and insert 40 rows of data for the tables Customers, Orders, Products, and Sales.
+1. Customers Table
+CREATE TABLE Customers (
+    CustomerID INT PRIMARY KEY,
+    CustomerName VARCHAR(100),
+    City VARCHAR(100)
+);
+
+INSERT INTO Customers (CustomerID, CustomerName, City) VALUES
+(1, 'John Doe', 'New York'),
+(2, 'Jane Smith', 'Los Angeles'),
+(3, 'James Brown', 'Chicago'),
+(4, 'Mary Johnson', 'Houston'),
+(5, 'Linda Williams', 'Phoenix'),
+(6, 'Michael Jones', 'Philadelphia'),
+(7, 'Robert Miller', 'San Antonio'),
+(8, 'Patricia Davis', 'San Diego'),
+(9, 'William Martínez', 'Dallas'),
+(10, 'Jennifer García', 'San Jose'),
+(11, 'David Lopez', 'Austin'),
+(12, 'Helen Harris', 'Jacksonville'),
+(13, 'Charles Taylor', 'Fort Worth'),
+(14, 'Nancy Allen', 'Columbus'),
+(15, 'Edward Clark', 'Indianapolis'),
+(16, 'Sarah Lewis', 'Charlotte'),
+(17, 'Jessica Young', 'San Francisco'),
+(18, 'Kevin White', 'Seattle'),
+(19, 'Laura King', 'Denver'),
+(20, 'Joseph Scott', 'Washington'),
+(21, 'Karen Adams', 'Boston'),
+(22, 'James Nelson', 'El Paso'),
+(23, 'Christopher Perez', 'Detroit'),
+(24, 'Matthew Hill', 'Memphis'),
+(25, 'Rachel Jackson', 'Baltimore'),
+(26, 'Daniel Walker', 'Las Vegas'),
+(27, 'Ashley Young', 'Louisville'),
+(28, 'Helen Anderson', 'Milwaukee'),
+(29, 'Brian Wright', 'Portland'),
+(30, 'Michael Green', 'Oklahoma City'),
+(31, 'Jessica Hall', 'Tucson'),
+(32, 'Joshua Carter', 'New Orleans'),
+(33, 'Sarah Mitchell', 'Bakersfield'),
+(34, 'George Perez', 'Tampa'),
+(35, 'Rachel Collins', 'Honolulu'),
+(36, 'John Rivera', 'Orlando'),
+(37, 'Susan Wood', 'St. Louis'),
+(38, 'David Harris', 'Minneapolis'),
+(39, 'Kevin Walker', 'Cleveland'),
+(40, 'Laura Green', 'Birmingham');
+2. Orders Table
+CREATE TABLE Orders (
+    OrderID INT PRIMARY KEY,
+    CustomerID INT,
+    OrderAmount DECIMAL(10, 2),
+    OrderDate DATE
+);
+
+INSERT INTO Orders (OrderID, CustomerID, OrderAmount, OrderDate) VALUES
+(1, 1, 250.00, '2025-01-01'),
+(2, 2, 450.00, '2025-01-02'),
+(3, 3, 120.00, '2025-01-03'),
+(4, 4, 340.00, '2025-01-04'),
+(5, 5, 500.00, '2025-01-05'),
+(6, 6, 200.00, '2025-01-06'),
+(7, 7, 750.00, '2025-01-07'),
+(8, 8, 300.00, '2025-01-08'),
+(9, 9, 600.00, '2025-01-09'),
+(10, 10, 400.00, '2025-01-10'),
+(11, 11, 250.00, '2025-01-11'),
+(12, 12, 550.00, '2025-01-12'),
+(13, 13, 350.00, '2025-01-13'),
+(14, 14, 600.00, '2025-01-14'),
+(15, 15, 200.00, '2025-01-15'),
+(16, 16, 700.00, '2025-01-16'),
+(17, 17, 450.00, '2025-01-17'),
+(18, 18, 550.00, '2025-01-18'),
+(19, 19, 500.00, '2025-01-19'),
+(20, 20, 400.00, '2025-01-20'),
+(21, 21, 700.00, '2025-01-21'),
+(22, 22, 150.00, '2025-01-22'),
+(23, 23, 600.00, '2025-01-23'),
+(24, 24, 250.00, '2025-01-24'),
+(25, 25, 550.00, '2025-01-25'),
+(26, 26, 120.00, '2025-01-26'),
+(27, 27, 600.00, '2025-01-27'),
+(28, 28, 500.00, '2025-01-28'),
+(29, 29, 450.00, '2025-01-29'),
+(30, 30, 300.00, '2025-01-30'),
+(31, 31, 350.00, '2025-02-01'),
+(32, 32, 400.00, '2025-02-02'),
+(33, 33, 600.00, '2025-02-03'),
+(34, 34, 450.00, '2025-02-04'),
+(35, 35, 300.00, '2025-02-05'),
+(36, 36, 500.00, '2025-02-06'),
+(37, 37, 400.00, '2025-02-07'),
+(38, 38, 250.00, '2025-02-08'),
+(39, 39, 650.00, '2025-02-09'),
+(40, 40, 200.00, '2025-02-10');
+3. Products Table
+CREATE TABLE Products (
+    ProductID INT PRIMARY KEY,
+    ProductName VARCHAR(100),
+    Price DECIMAL(10, 2)
+);
+
+INSERT INTO Products (ProductID, ProductName, Price) VALUES
+(1, 'Laptop', 800.00),
+(2, 'Smartphone', 600.00),
+(3, 'Headphones', 100.00),
+(4, 'Keyboard', 30.00),
+(5, 'Mouse', 20.00),
+(6, 'Monitor', 250.00),
+(7, 'Printer', 150.00),
+(8, 'Tablet', 350.00),
+(9, 'Smartwatch', 120.00),
+(10, 'Speaker', 50.00),
+(11, 'Refrigerator', 500.00),
+(12, 'Washing Machine', 400.00),
+(13, 'Microwave', 120.00),
+(14, 'Blender', 60.00),
+(15, 'Air Conditioner', 250.00),
+(16, 'Hair Dryer', 30.00),
+(17, 'Vacuum Cleaner', 150.00),
+(18, 'Coffee Maker', 90.00),
+(19, 'Toaster', 40.00),
+(20, 'Iron', 25.00),
+(21, 'Shirt', 30.00),
+(22, 'Jeans', 40.00),
+(23, 'Jacket', 60.00),
+(24, 'Sweater', 50.00),
+(25, 'T-shirt', 20.00),
+(26, 'Shoes', 80.00),
+(27, 'Socks', 10.00),
+(28, 'Sneakers', 100.00),
+(29, 'Boots', 120.00),
+(30, 'Hat', 15.00),
+(31, 'Sunglasses', 25.00),
+(32, 'Bag', 50.00),
+(33, 'Belt', 30.00),
+(34, 'Wallet', 20.00),
+(35, 'Watch', 100.00),
+(36, 'Ring', 150.00),
+(37, 'Necklace', 120.00),
+(38, 'Bracelet', 80.00),
+(39, 'Earrings', 40.00),
+(40, 'Perfume', 60.00);
+4. Sales Table
+CREATE TABLE Sales (
+    SalesID INT PRIMARY KEY,
+    ProductID INT,
+    SalesAmount DECIMAL(10, 2),
+    SalesDate DATE
+);
+
+INSERT INTO Sales (SalesID, ProductID, SalesAmount, SalesDate) VALUES
+(1, 1, 200.00, '2025-01-01'),
+(2, 2, 500.00, '2025-01-02'),
+(3, 3, 80.00, '2025-01-03'),
+(4, 4, 20.00, '2025-01-04'),
+(5, 5, 15.00, '2025-01-05'),
+(6, 6, 200.00, '2025-01-06'),
+(7, 7, 120.00, '2025-01-07'),
+(8, 8, 350.00, '2025-01-08'), (9, 9, 110.00, '2025-01-09'), (10, 10, 50.00, '2025-01-10'), (11, 11, 500.00, '2025-01-11'), (12, 12, 350.00, '2025-01-12'), (13, 13, 100.00, '2025-01-13'), (14, 14, 60.00, '2025-01-14'), (15, 15, 200.00, '2025-01-15'), (16, 16, 30.00, '2025-01-16'), (17, 17, 150.00, '2025-01-17'), (18, 18, 90.00, '2025-01-18'), (19, 19, 40.00, '2025-01-19'), (20, 20, 20.00, '2025-01-20'), (21, 21, 30.00, '2025-01-21'), (22, 22, 40.00, '2025-01-22'), (23, 23, 60.00, '2025-01-23'), (24, 24, 50.00, '2025-01-24'), (25, 25, 150.00, '2025-01-25'), (26, 26, 100.00, '2025-01-26'), (27, 27, 100.00, '2025-01-27'), (28, 28, 90.00, '2025-01-28'), (29, 29, 80.00, '2025-01-29'), (30, 30, 70.00, '2025-01-30'), (31, 31, 50.00, '2025-02-01'), (32, 32, 60.00, '2025-02-02'), (33, 33, 120.00, '2025-02-03'), (34, 34, 150.00, '2025-02-04'), (35, 35, 200.00, '2025-02-05'), (36, 36, 40.00, '2025-02-06'), (37, 37, 80.00, '2025-02-07'), (38, 38, 60.00, '2025-02-08'), (39, 39, 100.00, '2025-02-09'), (40, 40, 120.00, '2025-02-10');
+
+
+Lesson 19: Window Functions
+1.	Employees - Contains employee details such as EmployeeID, DepartmentID, Salary, etc.
+2.	Departments - Contains department details such as DepartmentID, DepartmentName, etc.
+3.	Sales - Contains sales data with fields such as SalesID, EmployeeID, ProductID, SalesAmount, etc.
+4.	Products - Contains product details like ProductID, ProductName, Price, etc.
+5.	Here are the SQL statements to create and insert 40 rows of data for the tables Employees, Departments, Sales, and Products.
+1. Employees Table
+CREATE TABLE Employees (
+    EmployeeID INT PRIMARY KEY,
+    DepartmentID INT,
+    Salary DECIMAL(10, 2),
+    EmployeeName VARCHAR(100)
+);
+
+INSERT INTO Employees (EmployeeID, DepartmentID, Salary, EmployeeName) VALUES
+(1, 1, 55000.00, 'John Doe'),
+(2, 2, 60000.00, 'Jane Smith'),
+(3, 1, 45000.00, 'James Brown'),
+(4, 3, 70000.00, 'Mary Johnson'),
+(5, 2, 75000.00, 'Linda Williams'),
+(6, 3, 80000.00, 'Michael Jones'),
+(7, 1, 65000.00, 'Robert Miller'),
+(8, 4, 58000.00, 'Patricia Davis'),
+(9, 5, 68000.00, 'William Martínez'),
+(10, 4, 52000.00, 'Jennifer García'),
+(11, 3, 54000.00, 'David Lopez'),
+(12, 2, 63000.00, 'Helen Harris'),
+(13, 1, 46000.00, 'Charles Taylor'),
+(14, 5, 55000.00, 'Nancy Allen'),
+(15, 4, 60000.00, 'Edward Clark'),
+(16, 1, 50000.00, 'Sarah Lewis'),
+(17, 2, 70000.00, 'Jessica Young'),
+(18, 3, 76000.00, 'Kevin White'),
+(19, 4, 67000.00, 'Laura King'),
+(20, 5, 59000.00, 'Joseph Scott'),
+(21, 1, 61000.00, 'Karen Adams'),
+(22, 3, 54000.00, 'James Nelson'),
+(23, 2, 58000.00, 'Christopher Perez'),
+(24, 1, 65000.00, 'Matthew Hill'),
+(25, 3, 49000.00, 'Rachel Jackson'),
+(26, 5, 64000.00, 'Daniel Walker'),
+(27, 4, 57000.00, 'Ashley Young'),
+(28, 1, 60000.00, 'Helen Anderson'),
+(29, 2, 63000.00, 'Brian Wright'),
+(30, 5, 52000.00, 'Michael Green'),
+(31, 1, 67000.00, 'Jessica Hall'),
+(32, 4, 55000.00, 'Joshua Carter'),
+(33, 2, 72000.00, 'Sarah Mitchell'),
+(34, 3, 46000.00, 'George Perez'),
+(35, 5, 50000.00, 'Rachel Collins'),
+(36, 1, 54000.00, 'John Rivera'),
+(37, 4, 56000.00, 'Orlando Robinson'),
+(38, 3, 65000.00, 'Luis Davis'),
+(39, 2, 68000.00, 'Barbara Moore'),
+(40, 1, 71000.00, 'David Harris');
+2. Departments Table
+CREATE TABLE Departments (
+    DepartmentID INT PRIMARY KEY,
+    DepartmentName VARCHAR(100)
+);
+
+INSERT INTO Departments (DepartmentID, DepartmentName) VALUES
+(1, 'Sales'),
+(2, 'Marketing'),
+(3, 'Operations'),
+(4, 'Finance'),
+(5, 'HR');
+3. Sales Table
+CREATE TABLE Sales (
+    SalesID INT PRIMARY KEY,
+    EmployeeID INT,
+    ProductID INT,
+    SalesAmount DECIMAL(10, 2),
+    SalesDate DATE
+);
+
+INSERT INTO Sales (SalesID, EmployeeID, ProductID, SalesAmount, SalesDate) VALUES
+(1, 1, 1, 500.00, '2025-01-01'),
+(2, 2, 2, 1200.00, '2025-01-02'),
+(3, 3, 3, 800.00, '2025-01-03'),
+(4, 4, 4, 1500.00, '2025-01-04'),
+(5, 5, 5, 300.00, '2025-01-05'),
+(6, 6, 6, 1000.00, '2025-01-06'),
+(7, 7, 7, 850.00, '2025-01-07'),
+(8, 8, 8, 500.00, '2025-01-08'),
+(9, 9, 9, 600.00, '2025-01-09'),
+(10, 10, 10, 450.00, '2025-01-10'),
+(11, 11, 11, 700.00, '2025-01-11'),
+(12, 12, 12, 800.00, '2025-01-12'),
+(13, 13, 13, 1200.00, '2025-01-13'),
+(14, 14, 14, 1500.00, '2025-01-14'),
+(15, 15, 15, 950.00, '2025-01-15'),
+(16, 16, 16, 600.00, '2025-01-16'),
+(17, 17, 17, 700.00, '2025-01-17'),
+(18, 18, 18, 1100.00, '2025-01-18'),
+(19, 19, 19, 500.00, '2025-01-19'),
+(20, 20, 20, 400.00, '2025-01-20'),
+(21, 21, 21, 800.00, '2025-01-21'),
+(22, 22, 22, 650.00, '2025-01-22'),
+(23, 23, 23, 700.00, '2025-01-23'),
+(24, 24, 24, 1200.00, '2025-01-24'),
+(25, 25, 25, 500.00, '2025-01-25'),
+(26, 26, 26, 850.00, '2025-01-26'),
+(27, 27, 27, 600.00, '2025-01-27'),
+(28, 28, 28, 1200.00, '2025-01-28'),
+(29, 29, 29, 700.00, '2025-01-29'),
+(30, 30, 30, 450.00, '2025-01-30'),
+(31, 31, 31, 800.00, '2025-02-01'),
+(32, 32, 32, 1200.00, '2025-02-02'),
+(33, 33, 33, 900.00, '2025-02-03'),
+(34, 34, 34, 600.00, '2025-02-04'),
+(35, 35, 35, 950.00, '2025-02-05'),
+(36, 36, 36, 1000.00, '2025-02-06'),
+(37, 37, 37, 700.00, '2025-02-07'),
+(38, 38, 38, 850.00, '2025-02-08'),
+(39, 39, 39, 600.00, '2025-02-09'),
+(40, 40, 40, 500.00, '2025-02-10');
+4. Products Table
+CREATE TABLE Products (
+    ProductID INT PRIMARY KEY,
+    ProductName VARCHAR(100),
+    Price DECIMAL(10, 2)
+);
+
+INSERT INTO Products (ProductID, ProductName, Price) VALUES
+(1, 'Laptop', 800.00),
+(2, 'Smartphone', 600.00),
+(3, 'Headphones', 100.00),
+(4, 'Keyboard', 30.00),
+(5, 'Mouse', 20.00),
+(6, 'Monitor', 250.00),
+(7, 'Printer', 150.00),
+(8, 'Tablet', 350.00),
+(9, 'Smartwatch', 120.00),
+(10, 'Speaker', 50.00),
+(11, 'Refrigerator', 500.00),
+(12, 'Washing Machine', 400.00),
+(13, 'Microwave', 120.00),
+(14, 'Blender', 60.00),
+(15, 'Air Conditioner', 250.00),
+(16, 'Hair Dryer', 30.00),
+(17, 'Vacuum Cleaner', 150.00),
+(18, 'Coffee Maker', 90.00),
+(19, 'Toaster', 40.00),
+(20, 'Iron', 25.00),
+(21, 'Shirt', 30.00),
+(22, 'Jeans', 40.00), (23, 'Shoes', 70.00), (24, 'Socks', 5.00), (25, 'Jacket', 100.00), (26, 'T-shirt', 20.00), (27, 'Sweater', 50.00), (28, 'Shorts', 30.00), (29, 'Hat', 15.00), (30, 'Gloves', 20.00), (31, 'Backpack', 60.00), (32, 'Wallet', 25.00), (33, 'Sunglasses', 40.00), (34, 'Scarf', 15.00), (35, 'Belt', 25.00), (36, 'Watch', 120.00), (37, 'Ring', 50.00), (38, 'Necklace', 80.00), (39, 'Earrings', 30.00), (40, 'Bracelet', 20.00);
+
+
+Lesson 20: Aggregated Window Functions
+1.	Sales - Contains data on sales transactions such as SalesAmount, EmployeeID, ProductID, SaleDate, etc.
+2.	Employees - Contains employee details such as EmployeeID, Salary, DepartmentID, etc.
+3.	Products - Contains product details such as ProductID, ProductName, Price, etc.
+4.	Orders - Contains order information such as OrderID, CustomerID, OrderAmount, OrderDate, etc.
+5.	Here are the SQL statements to create and insert 40 rows of data for the Sales, Employees, Products, and Orders tables:
+1. Sales Table
+CREATE TABLE Sales (
+    SalesID INT PRIMARY KEY,
+    EmployeeID INT,
+    ProductID INT,
+    SalesAmount DECIMAL(10, 2),
+    SaleDate DATE
+);
+
+INSERT INTO Sales (SalesID, EmployeeID, ProductID, SalesAmount, SaleDate) VALUES
+(1, 1, 1, 500.00, '2025-01-01'),
+(2, 2, 2, 1200.00, '2025-01-02'),
+(3, 3, 3, 800.00, '2025-01-03'),
+(4, 4, 4, 1500.00, '2025-01-04'),
+(5, 5, 5, 300.00, '2025-01-05'),
+(6, 6, 6, 1000.00, '2025-01-06'),
+(7, 7, 7, 850.00, '2025-01-07'),
+(8, 8, 8, 500.00, '2025-01-08'),
+(9, 9, 9, 600.00, '2025-01-09'),
+(10, 10, 10, 450.00, '2025-01-10'),
+(11, 11, 11, 700.00, '2025-01-11'),
+(12, 12, 12, 800.00, '2025-01-12'),
+(13, 13, 13, 1200.00, '2025-01-13'),
+(14, 14, 14, 1500.00, '2025-01-14'),
+(15, 15, 15, 950.00, '2025-01-15'),
+(16, 16, 16, 600.00, '2025-01-16'),
+(17, 17, 17, 700.00, '2025-01-17'),
+(18, 18, 18, 1100.00, '2025-01-18'),
+(19, 19, 19, 500.00, '2025-01-19'),
+(20, 20, 20, 400.00, '2025-01-20'),
+(21, 21, 21, 800.00, '2025-01-21'),
+(22, 22, 22, 650.00, '2025-01-22'),
+(23, 23, 23, 700.00, '2025-01-23'),
+(24, 24, 24, 1200.00, '2025-01-24'),
+(25, 25, 25, 500.00, '2025-01-25'),
+(26, 26, 26, 850.00, '2025-01-26'),
+(27, 27, 27, 600.00, '2025-01-27'),
+(28, 28, 28, 1200.00, '2025-01-28'),
+(29, 29, 29, 700.00, '2025-01-29'),
+(30, 30, 30, 450.00, '2025-01-30'),
+(31, 31, 31, 800.00, '2025-02-01'),
+(32, 32, 32, 1200.00, '2025-02-02'),
+(33, 33, 33, 900.00, '2025-02-03'),
+(34, 34, 34, 600.00, '2025-02-04'),
+(35, 35, 35, 950.00, '2025-02-05'),
+(36, 36, 36, 1000.00, '2025-02-06'),
+(37, 37, 37, 700.00, '2025-02-07'),
+(38, 38, 38, 850.00, '2025-02-08'),
+(39, 39, 39, 600.00, '2025-02-09'),
+(40, 40, 40, 500.00, '2025-02-10');
+2. Employees Table
+CREATE TABLE Employees (
+    EmployeeID INT PRIMARY KEY,
+    DepartmentID INT,
+    Salary DECIMAL(10, 2),
+    EmployeeName VARCHAR(100)
+);
+
+INSERT INTO Employees (EmployeeID, DepartmentID, Salary, EmployeeName) VALUES
+(1, 1, 55000.00, 'John Doe'),
+(2, 2, 60000.00, 'Jane Smith'),
+(3, 1, 45000.00, 'James Brown'),
+(4, 3, 70000.00, 'Mary Johnson'),
+(5, 2, 75000.00, 'Linda Williams'),
+(6, 3, 80000.00, 'Michael Jones'),
+(7, 1, 65000.00, 'Robert Miller'),
+(8, 4, 58000.00, 'Patricia Davis'),
+(9, 5, 68000.00, 'William Martínez'),
+(10, 4, 52000.00, 'Jennifer García'),
+(11, 3, 54000.00, 'David Lopez'),
+(12, 2, 63000.00, 'Helen Harris'),
+(13, 1, 46000.00, 'Charles Taylor'),
+(14, 5, 55000.00, 'Nancy Allen'),
+(15, 4, 60000.00, 'Edward Clark'),
+(16, 1, 50000.00, 'Sarah Lewis'),
+(17, 2, 70000.00, 'Jessica Young'),
+(18, 3, 76000.00, 'Kevin White'),
+(19, 4, 67000.00, 'Laura King'),
+(20, 5, 59000.00, 'Joseph Scott'),
+(21, 1, 61000.00, 'Karen Adams'),
+(22, 3, 54000.00, 'James Nelson'),
+(23, 2, 58000.00, 'Christopher Perez'),
+(24, 1, 65000.00, 'Matthew Hill'),
+(25, 3, 49000.00, 'Rachel Jackson'),
+(26, 5, 64000.00, 'Daniel Walker'),
+(27, 4, 57000.00, 'Ashley Young'),
+(28, 1, 60000.00, 'Helen Anderson'),
+(29, 2, 63000.00, 'Brian Wright'),
+(30, 5, 52000.00, 'Michael Green'),
+(31, 1, 67000.00, 'Jessica Hall'),
+(32, 4, 55000.00, 'Joshua Carter'),
+(33, 2, 72000.00, 'Sarah Mitchell'),
+(34, 3, 46000.00, 'George Perez'),
+(35, 5, 50000.00, 'Rachel Collins'),
+(36, 1, 54000.00, 'John Rivera'),
+(37, 4, 56000.00, 'Orlando Robinson'),
+(38, 3, 65000.00, 'Luis Davis'),
+(39, 2, 68000.00, 'Barbara Moore'),
+(40, 1, 71000.00, 'David Harris');
+3. Products Table
+CREATE TABLE Products (
+    ProductID INT PRIMARY KEY,
+    ProductName VARCHAR(100),
+    Price DECIMAL(10, 2)
+);
+
+INSERT INTO Products (ProductID, ProductName, Price) VALUES
+(1, 'Laptop', 800.00),
+(2, 'Smartphone', 600.00),
+(3, 'Headphones', 100.00),
+(4, 'Keyboard', 30.00),
+(5, 'Mouse', 20.00),
+(6, 'Monitor', 250.00),
+(7, 'Printer', 150.00),
+(8, 'Tablet', 350.00),
+(9, 'Smartwatch', 120.00),
+(10, 'Speaker', 50.00),
+(11, 'Refrigerator', 500.00),
+(12, 'Washing Machine', 400.00),
+(13, 'Microwave', 120.00),
+(14, 'Blender', 60.00),
+(15, 'Air Conditioner', 250.00),
+(16, 'Hair Dryer', 30.00),
+(17, 'Vacuum Cleaner', 150.00),
+(18, 'Coffee Maker', 90.00),
+(19, 'Toaster', 40.00),
+(20, 'Iron', 25.00),
+(21, 'Shirt', 30.00),
+(22, 'Jeans', 40.00),
+(23, 'Shoes', 70.00),
+(24, 'Socks', 5.00),
+(25, 'Jacket', 100.00),
+(26, 'T-shirt', 20.00),
+(27, 'Sweater', 50.00), (28, 'Shorts', 30.00), (29, 'Hat', 15.00), (30, 'Gloves', 20.00), (31, 'Backpack', 60.00), (32, 'Wallet', 25.00), (33, 'Sunglasses', 40.00), (34, 'Scarf', 15.00), (35, 'Belt', 25.00), (36, 'Watch', 120.00), (37, 'Ring', 50.00), (38, 'Necklace', 80.00), (39, 'Earrings', 30.00), (40, 'Bracelet', 20.00);
+
+4. Orders Table
+```
+CREATE TABLE Orders (
+    OrderID INT PRIMARY KEY,
+    CustomerID INT,
+    OrderAmount DECIMAL(10, 2),
+    OrderDate DATE
+);
+
+INSERT INTO Orders (OrderID, CustomerID, OrderAmount, OrderDate) VALUES
+(1, 1, 550.00, '2025-01-01'),
+(2, 2, 700.00, '2025-01-02'),
+(3, 3, 450.00, '2025-01-03'),
+(4, 4, 800.00, '2025-01-04'),
+(5, 5, 1200.00, '2025-01-05'),
+(6, 6, 950.00, '2025-01-06'),
+(7, 7, 700.00, '2025-01-07'),
+(8, 8, 600.00, '2025-01-08'),
+(9, 9, 800.00, '2025-01-09'),
+(10, 10, 700.00, '2025-01-10'),
+(11, 11, 650.00, '2025-01-11'),
+(12, 12, 550.00, '2025-01-12'),
+(13, 13, 450.00, '2025-01-13'),
+(14, 14, 600.00, '2025-01-14'),
+(15, 15, 550.00, '2025-01-15'),
+(16, 16, 600.00, '2025-01-16'),
+(17, 17, 800.00, '2025-01-17'),
+(18, 18, 1000.00, '2025-01-18'),
+(19, 19, 700.00, '2025-01-19'),
+(20, 20, 600.00, '2025-01-20'),
+(21, 21, 500.00, '2025-01-21'),
+(22, 22, 450.00, '2025-01-22'),
+(23, 23, 700.00, '2025-01-23'),
+(24, 24, 650.00, '2025-01-24'),
+(25, 25, 600.00, '2025-01-25'),
+(26, 26, 700.00, '2025-01-26'),
+(27, 27, 800.00, '2025-01-27'),
+(28, 28, 950.00, '2025-01-28'),
+(29, 29, 1000.00, '2025-01-29'),
+(30, 30, 700.00, '2025-01-30'),
+(31, 31, 600.00, '2025-02-01'),
+(32, 32, 550.00, '2025-02-02'),
+(33, 33, 450.00, '2025-02-03'),
+(34, 34, 600.00, '2025-02-04'),
+(35, 35, 650.00, '2025-02-05'),
+(36, 36, 700.00, '2025-02-06'),
+(37, 37, 800.00, '2025-02-07'),
+(38, 38, 750.00, '2025-02-08'),
+(39, 39, 900.00, '2025-02-09'),
+(40, 40, 950.00, '2025-02-10');
